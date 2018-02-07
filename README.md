@@ -29,4 +29,4 @@ WhatsApp allows you to export the 40000 most recent messages to a txt file.  Her
 ```
 
 # Pre-processing
-Firstly preprocessing to remove the <Media omitted> messages
+Firstly preprocessing to remove the "<Media omitted>" messages, timestamps, categorize by user
