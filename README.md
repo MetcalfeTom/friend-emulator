@@ -10,3 +10,5 @@ As I'm not one to re-invent the wheel here, journocode has published an [amazing
 
 ## Exploratory Data Analysis
 
+First off, a click visualisation of user activity
+
