@@ -12,3 +12,4 @@ As I'm not one to re-invent the wheel here, journocode has published an [amazing
 
 First off, a click visualisation of user activity
 
+![alt text](https://github.com/MetcalfeTom/Friend-Emulator/blob/master/UserPieChart.png?raw=true "User activity")
