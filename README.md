@@ -64,4 +64,4 @@ I went back to the 3-layer configuartion of my first network, but doubled the le
 
 One thing I'm unhapy about though, is that the model is playing it safe and sticking to the most common words in the chat vocabulary, and not making use of any of the diverse and coveted slang.
 
-Wanted to take same architecture and apply to word embeddings, however long-term dependency has now changed significantly since the messages are held in shorter sequences...
+Wanted to take same architecture and apply to word embeddings, however long-term dependency has now changed significantly since the messages are held in shorter sequences.  The information stored is now more likely to take into account replies between different users
