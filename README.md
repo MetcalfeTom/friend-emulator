@@ -22,7 +22,7 @@ I wanted to test out the effectiveness of character-level modelling vs using wor
 
 ## Iteration 1:
 #### Character-level 3-layer network, runtime: 4 hours
-
+Generated sample from epoch 30:
 ```tom metcalfe: we slept under sool pay it the part in should it
 hyde: i'm anyone was going that a the the now
 hackney: i'm good
