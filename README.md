@@ -30,7 +30,7 @@ hackney: i was lang is for the and deally have a the at we be on the day and bar
 hackney: i'm were probably think the are bes lave bry wetterds my let have
 ```
 
-I ran a 3-layer neural network: two 128-unit LSTM layers (with 50% dropout) and then a fully-connected 32-unit dense layer.  The nextwork took in sequences of 50 characters from the chat log and was trained to predict the next character.  Using a step size of 7 characters I was able to produce 126000 sequences for training.  Dradient descent wasn't particularly fast, however I did learn a few things:
+I ran a 3-layer neural network: two 128-unit LSTM layers (with 50% dropout) and then a fully-connected 32-unit dense layer.  The network took in sequences of 50 characters from the chat log and was trained to predict the next character.  Using a step size of 7 characters I was able to produce 126000 sequences for training.  Gradient descent wasn't particularly fast, however I did learn a few things:
 
 - Even after the first 3 epochs, the model began to replicate the format of the conversation quite well: it used line breaks and then began each new line with a username and colon (although it did "invent" some of its own names to begin with).  This is due to the sequence of line breaks followed by users being so frequent in the training set.
 - I wanted to leave emoji in to begin with, but the model rarely used them because each emoji is treated as its own character, so the probability of any of them being used after a standard character is too small
