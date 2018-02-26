@@ -21,7 +21,7 @@ I considered separating the messages by user and feeding that information as a 1
 I wanted to test out the effectiveness of character-level modelling vs using word embeddings, as well as figure out how best to optimize the training time given my (relatively) underpowered GPU, so for the first few iterations I held running time for thirty epochs as my metric, given a batch size of 32
 
 ## Iteration 1:
-#### Character-level 3-layer network, runtime: 4 hours
+#### Character-level 3-layer network, runtime: 4.5 hours
 Generated sample from epoch 30:
 ```tom metcalfe: we slept under sool pay it the part in should it
 hyde: i'm anyone was going that a the the now
@@ -38,5 +38,30 @@ I ran a 3-layer neural network: two 128-unit LSTM layers (with 50% dropout) and 
 - It learned very quickly how verbose Hackney could be
 
 ## Iteration 2:
-#### Character-level 2-layer network
-Since overfitting was less of an issue than run time, I decided to decrease dropout to 0.3.  I took out the second LSTM layer in my network to increase gradient descent speed and used RMSProp for optimization.  I filtered out all but the 70 most common characters this time, which in turn meant I had to also remove empty messages, trimming my training set to 125500 sequences
+#### Character-level 2-layer network, runtime: 1 hour
+Generated sample from epoch 30:
+```metcalfe: just post sty
+hackney: what wy the wiel
+metcalfe: i thinka?
+orr: and you just on ersice somnhel did one aboet ha pay in sare this outd
+joyce: yeah you thitk no one going
+denison: i'm mucka
+denison: it's the coulds tromans?
+joyce: yeah it maybe araninginge
+hackney: creds?
+orr: ha're time
+joyce: i rangurang a out for me
+hyde: ghing odes
+denison: moleime me  
+```
+I took out the second LSTM layer in my network to lower the runtime and used RMSProp for optimization.  I filtered out all but the 70 most common characters this time, which in turn meant I had to also remove blank messages, trimming my training set to 125500 sequences.
+
+The system ran 4x faster, but qualitatively it made a lot of errors in its prediction, so I'll shoot for somewhere in between.
+
+## Iteration 3:
+
+I went back to the 3-layer configuartion of my first network, but doubled the learning rate to speed up gradient descent.  Once again limited the character set to 70 and used RMSProp.
+
+One thing I'm unhapy about though, is that the model is playing it safe and sticking to the most common words in the chat vocabulary, and not making use of any of the diverse and coveted slang.
+
+Wanted to take same architecture and apply to word embeddings, however long-term dependency has now changed significantly since the messages are held in shorter sequences...
