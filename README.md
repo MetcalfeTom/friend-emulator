@@ -22,8 +22,7 @@ I wanted to test out the effectiveness of character-level modelling vs using wor
 
 ## Iteration 1:
 #### Character-level 3-layer network, runtime: 4.5 hours
-Generated sample from epoch 30:
-```tom metcalfe: we slept under sool pay it the part in should it
+```metcalfe: we slept under sool pay it the part in should it
 hyde: i'm anyone was going that a the the now
 hackney: i'm good
 hackney: i was lang is for the and deally have a the at we be on the day and bare the can be longand do it was it over to mace it could come to the mare of it i think i the getter to we antter tonight then?
@@ -39,7 +38,6 @@ I ran a 3-layer neural network: two 128-unit LSTM layers (with 50% dropout) and 
 
 ## Iteration 2:
 #### Character-level 2-layer network, runtime: 1 hour
-Generated sample from epoch 30:
 ```metcalfe: just post sty
 hackney: what wy the wiel
 metcalfe: i thinka?
@@ -59,8 +57,22 @@ I took out the second LSTM layer in my network to lower the runtime and used RMS
 The system ran 4x faster, but qualitatively it made a lot of errors in its prediction, so I'll shoot for somewhere in between.
 
 ## Iteration 3:
+#### Character-level 3-layer network, run time: 2 hours
+
+```
+hackney: what a that the looking it do the metter the port to me on a pore is not a sell that tame the thought as i gonna a thinking the part of the warn
+tromans: i was not the man
+hyde: something to the same the faride the powe work are you really have a tains on a nem playing that to cond
+denison: when they tains in the price
+hackney: so we think the poon they was anyone was it was
+```
 
 I went back to the 3-layer configuartion of my first network, but doubled the learning rate to speed up gradient descent.  Once again limited the character set to 70 and used RMSProp.
+
+I've managed to double my algorithm's efficiency, but the model is failing to fit well on the training set, so I'll try to correct the bias by adding more layers
+
+## Iteration 4:
+#### Character-level 5-layer network
 
 One thing I'm unhapy about though, is that the model is playing it safe and sticking to the most common words in the chat vocabulary, and not making use of any of the diverse and coveted slang.
 
