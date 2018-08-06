@@ -3,7 +3,7 @@ import os
 import sys
 import numpy as np
 from keras.models import Model
-from keras.layers import LSTM, Input, Dropout, Dense, Embedding
+from keras.layers import LSTM, Input, Dropout, Dense, Embedding, Activation
 from keras.optimizers import RMSprop
 from keras.callbacks import Callback
 import random
@@ -61,6 +61,8 @@ def RNNModel(maxLen, vocabSize):
     X = Dense(256)(X)
     X = Dense(vocabSize)(X)
     X = Activation("softmax")(X)
+
+    model = Model(inputs=Inputs, outputs=X)
 
     return model
 
