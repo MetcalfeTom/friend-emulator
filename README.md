@@ -34,5 +34,3 @@ raddish : man
 ```
 
 Please leave me yours!
-
-![User Activity](https://github.com/MetcalfeTom/Friend-Emulator/blob/master/UserPieChart.png)
