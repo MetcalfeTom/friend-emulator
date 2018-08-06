@@ -42,7 +42,7 @@ def preProcess(chat):
                 filtered += char
 
         ## Omit completely filtered (blank) messages
-        if ": \n" not in filtered:
+        if ": \n" not in filtered and len(filtered) > 1:
             processed.append(filtered.strip(" -"))
 
     return processed
@@ -134,7 +134,7 @@ def train_on_chat(chat):
 
     T_sequences = []
     next_words = []
-    for i in range(0, len(wordCorpus) - maxLen, 11):  # Split corpus into sequences of maxLen words
+    for i in range(0, len(wordCorpus) - maxLen, 3):  # Split corpus into sequences of maxLen words
         T_sequences.append(wordCorpus[i: i + maxLen])
         next_words.append(wordCorpus[i + maxLen])
 
@@ -154,7 +154,7 @@ def train_on_chat(chat):
     model.compile(loss="categorical_crossentropy", optimizer=RMSprop(lr=0.0005, clipvalue=1), metrics=['accuracy'])
     callback = chatGenerator(Tokenize, unTokenize, wordCorpus, maxLen)
 
-    model.fit(X, Y, epochs=10, batch_size=32, shuffle=True, callbacks=[callback])
+    model.fit(X, Y, epochs=20, batch_size=32, shuffle=True, callbacks=[callback])
 
 if __name__ == '__main__':
     chat = load_chat()
