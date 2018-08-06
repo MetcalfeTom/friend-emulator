@@ -23,6 +23,10 @@ raddish : what are you saying tonight ?
 raddish : what you doing brownie ticket ? 
 ```
 
+```orr: approx time we going tonight ? 
+metcalfe : sometime after 8:00 id imagine 
+hyde : thats not a time``` 
+
 ```raddish : and hotel included ? !
 hackney : yeah fam
 raddish : oh fuck
