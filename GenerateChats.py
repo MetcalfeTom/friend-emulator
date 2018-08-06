@@ -51,19 +51,16 @@ def RNNModel(maxLen, vocabSize):
 
     Inputs = Input(shape=(maxLen,), dtype="float")
 
-    Embeddings = Embedding(vocabSize, 500, dtype="float", input_length=maxLen, trainable=True)
+    Embeddings = Embedding(vocabSize, 512, dtype="float", input_length=maxLen, trainable=True)
     Embeddings = Embeddings(Inputs)
 
-    X = LSTM(512, input_shape=(maxLen, 500), return_sequences=True)(Embeddings)
-    X = LSTM(512, return_sequences=True)(X)
-    X = LSTM(512, return_sequences=False)(X)
-    X = Dense(1024, activation="relu")(X)
+    X = LSTM(256, input_shape=(maxLen, 512), return_sequences=True)(Embeddings)
+    X = LSTM(128, return_sequences=False)(X)
+    X = Dense(128)(X)
     X = Dropout(0.5)(X)
-    X = Dense(1024, activation="relu")(X)
-    X = Dropout(0.5)(X)
-    X = Dense(vocabSize, activation="softmax")(X)
-
-    model = Model(inputs=Inputs, outputs=X)
+    X = Dense(256)(X)
+    X = Dense(vocabSize)(X)
+    X = Activation("softmax")(X)
 
     return model
 
