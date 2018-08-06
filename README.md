@@ -12,7 +12,7 @@ Put any number of these files into the same directory as the GenerateChats scrip
 
 # Specifics
 
-The script will separate your chats into sequences, try to learn the probability distribution of the following word, given the sequence.
+The script will separate your chats into sequences, then try to learn the probability distribution of the following words given the sequence.
 
 It does this through a multi-layer LSTM network.  The network also has learnable embeddings so your friends' non-standard vocabulary will be conserved.
 
