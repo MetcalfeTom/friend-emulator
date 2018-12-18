@@ -8,7 +8,21 @@ More & more of my friends are moving away from where I live, some across differe
 
 WhatsApp allows you to export the chat log for any group chat or contact.  Simply go to your settings, hit 'Chats' and then 'Chat history'.  Select the chat and you will receive it in a text file via e-mail.
 
-Put any number of these files into the same directory as the GenerateChats script, run it and watch the magic happen!  At first, the chats will be nonsense jumbles of words, but after a couple epochs you will start to notice the network replicating the chat format nicely.
+Put any number of these files into the same directory as the GenerateChats script.
+
+## Requirements
+To run this Emulator you need Python and some other requirements like TensorFlow, you can install them using:
+```bash
+pip install -r requirements.txt -U
+```
+
+## Running
+
+```bash
+python GenerateChats.py
+```
+
+Run it and watch the magic happen!  At first, the chats will be nonsense jumbles of words, but after a couple epochs you will start to notice the network replicating the chat format nicely.
 
 # Specifics
 
