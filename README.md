@@ -1,12 +1,12 @@
 # Friend-Emulator
 
-More & more of my friends are moving away from where I live, some across different time zones.  To keep myself from becoming lonely, I figured the next best thing to physical human contact is an NLP bot that can convincingly emulate the speaking style of my friends.  Now you can do the same!
+More & more of my friends are moving away from where I live, some across different time zones.  To keep myself from becoming lonely, I figured the next best thing to physical human contact would be a bot that can convincingly mimic the speaking style of my friends.  Now you can do the same!
 
 # Setup
 
 ![chats](https://www.android-recovery.net/images/app-review/whatsapp-android-settings-chats-and-calls.png)
 
-WhatsApp allows you to export the chat log for any group chat or contact.  Simply go to your settings, hit 'Chats' and then 'Chat history'.  Select the chat and you will receive it in a text file via e-mail.
+WhatsApp allows you to export the chat log for any group chat or contact.  Simply go to your settings in the app, hit 'Chats' and then 'Chat history'.  Select the chat and you will receive it in a text file via e-mail.
 
 Put any number of these files into the same directory as the GenerateChats script.
 
@@ -26,7 +26,12 @@ Run it and watch the magic happen!  At first, the chats will be nonsense jumbles
 
 # Specifics
 
-The script will separate your chats into sequences, then try to learn the probability distribution of the following words given the sequence.
+The script will separate your chats into 7-word sequences, then try to learn the probability distribution of the following words given the sequence.  At the end of each epoch of training, the script generates chats by the following steps:
+
+1. Take a random 7-word sequence from the chat
+2. Predict the following word
+3. Add the predicted word to the end of the sequence and omit the first
+4. Repeat steps 1-3 for 150 words
 
 It does this through a multi-layer LSTM network.  The network also has learnable embeddings so your friends' non-standard vocabulary will be conserved.
 
