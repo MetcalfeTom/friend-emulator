@@ -1,6 +1,7 @@
 import random
 from keras.callbacks import Callback
 import sys
+import numpy as np
 
 
 class ChatGenerator(Callback):
