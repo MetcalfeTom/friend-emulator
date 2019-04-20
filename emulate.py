@@ -62,6 +62,9 @@ def pre_process(chat):
         if ": \n" not in filtered and len(filtered) > 1:
             processed.append(filtered.strip(" -"))
 
+    if len(processed) == 0:
+        raise NoFriendsError
+
     return processed
 
 
@@ -133,8 +136,6 @@ def train_on_chat(chat):
         next_words.append(word_corpus[i + max_len])
 
     m = len(t_sequences)
-    if m == 0:
-        raise NoFriendsError
 
     X = np.zeros([m, max_len])
     Y = np.zeros([m, vocab_size])
