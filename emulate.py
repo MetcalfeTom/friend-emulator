@@ -122,7 +122,7 @@ def train_on_chat(chat):
     tokenize = dict((c, i) for i, c in enumerate(t_words))
     untokenize = dict((i, c) for i, c in enumerate(t_words))
 
-    vocab_size = len(tokenize.keys()) + 1
+    vocab_size = len(tokenize.keys())
 
     t_sequences = []
     next_words = []
@@ -154,6 +154,7 @@ def train_on_chat(chat):
     callback = ChatGenerator(tokenize, untokenize, word_corpus, max_len)
 
     model.fit(X, Y, epochs=20, batch_size=32, shuffle=True, callbacks=[callback])
+    return 1
 
 
 if __name__ == "__main__":
