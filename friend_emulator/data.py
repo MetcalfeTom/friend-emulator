@@ -40,13 +40,12 @@ class DataFriend(object):
         if len(self.messages) == 0:
             raise NoFriendsError
 
-    ##TODO: keep timestamps and users
-    # TODO: refactor for quicker processing
     def pre_process(self):
         """Takes a list of messages and removes all timestamps & media messages.
            Returns a list of messages with all special characters and emoji removed"""
 
         # remove media message remnants & timestamps
+        timestamps = [message[:19] for message in self.messages]
 
         nomedia = [
             message[20:].lower()
@@ -57,7 +56,7 @@ class DataFriend(object):
         m = len(nomedia)
 
         filter = list(
-            " eaotinslrhdmcy\nu:gwbkfpj'xv?.054,7912/\"3!z-q86+£=(_)&*%@#;$\\~^<[]>"
+            " eaotinslrhdmcy\nugwbk:fpj'xv?.054,7912/\"3!z-q86+£=(_)&*%@#;$\\~^<[]>"
         )
 
         processed = []
@@ -71,12 +70,10 @@ class DataFriend(object):
             # omit completely filtered (blank) messages
             if ": \n" not in filtered and len(filtered) > 1:
                 text = filtered.strip(" -")
-                separator = text.index(":")
-                user = text[:separator]
-                text = text[separator:]
+                separator = text.split()[:2]
+                user = " ".join(separator)[:-1]
 
-                msg = Message(user=user, text=text)
-
+                msg = Message(user=user, text=text, timestamp= timestamps[i])
                 processed.append(msg)
 
         if len(processed) == 0:

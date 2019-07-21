@@ -20,16 +20,15 @@ def train_on_chat(chat):
     corpus = []
 
     # TODO: use spaCy tokenizer
-    chat_split = ["{}: {}".format(s.get("user"), s.get("text")) for s in chat]
     chat_split = [
-        s.replace("\n", " \n")
+        s.get("text").replace("\n", " \n")
         .replace("!", " !")
         .replace("?", " ?")
         .replace(":", " :")
         .replace(".", " .")
         .replace(",", " ,")
         .split(" ")
-        for s in chat_split
+        for s in chat
     ]
 
     for i in range(n):
