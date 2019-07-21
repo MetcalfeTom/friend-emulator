@@ -70,7 +70,12 @@ class DataFriend(object):
 
             # omit completely filtered (blank) messages
             if ": \n" not in filtered and len(filtered) > 1:
-                msg = Message(text=filtered.strip(" -"))
+                text = filtered.strip(" -")
+                separator = text.index(":")
+                user = text[:separator]
+                text = text[separator:]
+
+                msg = Message(user=user, text=text)
 
                 processed.append(msg)
 
