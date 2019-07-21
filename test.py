@@ -1,22 +1,18 @@
-from emulate import train_on_chat, pre_process, NoFriendsError
+from emulate import train_on_chat
+from friend_emulator.data import Message
 
 test_data = [
-    "tom metcalfe : i sure am lonely out here",
-    "tom metcalfe : i will keep you company",
+    Message(user="thomas metcalfe", text="i sure am lonely out here"),
+    Message(user="thomas metcalfe", text="i will keep you company"),
 ]
 
 messages_to_filter = ["tom metcalfe : \n", "tom metcalfe : 👋"]
 
 
-def test_train_on_chat():
-    finished = train_on_chat(test_data)
-    assert finished == 1
+def test_train_on_chat(capsys):
+    train_on_chat(test_data)
+    captured = capsys.readouterr()[0]
 
-
-def test_pre_process():
-    try:
-        pre_process(messages_to_filter)
-        assert False
-
-    except NoFriendsError:
-        assert True
+    assert "loss:" in captured
+    assert "thomas" in captured
+    assert "------------------------------------------------" in captured
